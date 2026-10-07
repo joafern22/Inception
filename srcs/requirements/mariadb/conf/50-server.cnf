@@ -1,6 +1,6 @@
 [mariadbd]
-user            = mysql
-datadir         = /data/db
-socket          = /run/mysqld/mysqld.socket
+user            = joafern2
+datadir         = /data/mariadb
+socket          = /inception/mariadb/mariadbd.socket
 port            = 3306
 bind-address    = 0.0.0.0
