@@ -4,3 +4,6 @@ datadir         = /data/mariadb
 socket          = /inception/mariadb/mariadbd.socket
 port            = 3306
 bind-address    = 0.0.0.0
+
+[client]
+socket          = /inception/mariadb/mariadbd.socket
