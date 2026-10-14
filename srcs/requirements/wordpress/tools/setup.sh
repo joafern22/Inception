@@ -10,7 +10,7 @@ DB_PASSWORD=$(cat /run/secrets/db_password)
 
 # check if MariaDB container has been set
 tries=0
-until mariadb-admin ping --host=mariadb --user"${MYSQL_USER}" --password="${DB_PASSWORD}" --silent; do
+until mariadb-admin ping --host=mariadb --user="${MYSQL_USER}" --password="${DB_PASSWORD}" --silent; do
     tries=$((tries + 1))
     if [ "$tries" -ge 30 ]; then
         echo "MariaDB not reachable after 30 attempts" >&2
@@ -33,7 +33,7 @@ if [ ! -f /var/www/html/wp-config.php ]; then
     wp config create --path=/var/www/html --allow-root \
         --dbname="${MYSQL_DATABASE}" \
         --dbuser="${MYSQL_USER}" \
-        --dbpass="{DB_PASSWORD}" \
+        --dbpass="${DB_PASSWORD}" \
         --dbhost=mariadb:3306
 
 # enter the title and administartor, then install
