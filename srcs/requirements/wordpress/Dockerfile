@@ -22,5 +22,8 @@ RUN chmod +x /usr/local/bin/setup.sh
 # document the php-fpm port publishes nothing
 EXPOSE 9000
 
+# sets the working directory to ease using wp commands
+WORKDIR /var/www/html
+
 # runs the script as PID 1 when container starts
 ENTRYPOINT ["setup.sh"]
