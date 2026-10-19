@@ -2,7 +2,6 @@ LOGIN	= joafern2
 DOMAIN	= $(LOGIN).42.fr
 DATA	= /home/$(LOGIN)/data
 COMPOSE	= docker compose -f srcs/docker-compose.yml
-DATA	= /home/joafern2/data
 SECRETS	= secrets/db_root_password.txt secrets/db_password.txt secrets/credentials.txt
 
 all: hosts up
