@@ -29,6 +29,21 @@ services:
       - mariadb
     restart: unless-stopped
 
+  nginx:
+    build: requirements/nginx
+    image: nginx
+    container_name: nginx
+    env_file: .env
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress_data:/var/www/html:ro
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+    restart: unless-stopped
+
 volumes:
   mariadb_data:
     driver: local
