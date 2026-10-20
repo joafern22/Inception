@@ -1,3 +1,5 @@
+name: inception
+
 services:
   mariadb:
     build: requirements/mariadb
