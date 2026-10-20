@@ -9,12 +9,9 @@ all: hosts up
 hosts:
 	grep -qF "$(DOMAIN)" /etc/hosts || echo "127.0.0.1 $(DOMAIN)" | sudo tee -a /etc/hosts > /dev/null
 
-up: srcs/.env $(SECRETS)
+up: $(SECRETS)
 	mkdir -p $(DATA)/mariadb $(DATA)/wordpress
 	$(COMPOSE) up -d --build
-
-srcs/.env:
-	cp srcs/.env.example srcs/.env
 
 secrets/db_root_password.txt secrets/db_password.txt:
 	mkdir -p secrets
@@ -41,7 +38,6 @@ fclean:
 	$(COMPOSE) down --rmi all --volumes
 	sudo rm -rf $(DATA)
 	rm -rf secrets
-	rm -f srcs/.env
 
 re: fclean all
 
